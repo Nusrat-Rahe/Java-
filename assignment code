@@ -1,0 +1,80 @@
+package com.mycompany.bankmain;
+class BankAccount{
+   private int accountNumber;
+   private String accountHolder;
+   private double balance;
+   private static int totalAccounts=0;
+   private static double totalBankBalance=0;
+
+    public BankAccount(int accountNumber, String accountHolder, double initialBalance) {
+        this.accountNumber = accountNumber;
+        this.accountHolder = accountHolder;
+        balance = 500;
+        if(initialBalance<500){
+            System.out.println("Initial deposit must be at least 500.Setting balance to 500.");
+        }
+        else{
+           balance=initialBalance;
+        }
+        totalAccounts++;
+        totalBankBalance+=initialBalance;
+    }
+
+    public int getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setAccountNumber(int accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    public String getAccountHolder() {
+        return accountHolder;
+    }
+
+    public void setAccountHolder(String accountHolder) {
+        this.accountHolder = accountHolder;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+   
+     public void deposit(double amount){
+        if(amount>0){
+              balance+=amount;
+              System.out.println("deposited: "+amount+"New Balance: "+balance); 
+        }
+                  
+            else{
+                    System.out.println("deposit must be positive");
+                    }   
+        }
+        
+    public void withdraw(double amount){
+        if(amount>0){
+            if(balance-amount>500){
+                System.out.println("");
+            }
+        }
+        
+    }
+    
+
+public static int getTotalAccounts(){
+    return totalAccounts;
+}
+public static int getTotalBankBalance(){
+     return totalBankBalance;
+}     
+}
+public class BankMain {
+
+    public static void main(String[] args) {
+        BankAccount A1=new BankAccount(1234,"Rahe",5000);
+        BankAccount A2=new BankAccount(4321,"mahe",450);
+        BankAccount A3=new BankAccount(1234567,"Nusrat",500);
+        
+        System.out.println("Hello World!");
+    }
+}
