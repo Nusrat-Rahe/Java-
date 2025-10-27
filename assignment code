@@ -74,7 +74,9 @@ public class BankMain {
         BankAccount A1=new BankAccount(1234,"Rahe",5000);
         BankAccount A2=new BankAccount(4321,"mahe",450);
         BankAccount A3=new BankAccount(1234567,"Nusrat",500);
-        
+           A1.deposit(500);
+        A2.withdraw(100);
+        A3.diposit(50);
         System.out.println("Hello World!");
     }
 }
