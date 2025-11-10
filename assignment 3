@@ -1,0 +1,71 @@
+package com.mycompany.gamesystem;
+interface CharecterActions{
+    void attack();
+    void defend();
+    void gainExperience(int points);   
+}
+abstract class GameCharecter implements CharecterActions{
+protected String name;
+protected int level;
+protected int experience;
+
+    public GameCharecter(String name, int level, int experience) {
+        this.name = name;
+        this.level = level;
+        this.experience = experience;
+    }
+    public void showStats(){
+        System.out.println("Character Created:"+name
+                +"Level:"+level+
+                "|Experience:"+experience);
+    }
+@Override
+    public abstract void attack();
+@Override
+    public abstract void defend();
+
+}
+class Warrior extends GameCharecter{
+
+    public Warrior(String name, int level, int experience) {
+        super(name, level, experience);
+    }
+    
+    @Override
+    public void attack() {
+        System.out.println(name+" attacks fiercely with a sword!"); 
+        gainExperience(40);
+        
+    }
+
+    @Override
+    public void defend() {
+        System.out.println(name+" defends with a sheild!");
+   gainExperience(-20);
+    }
+
+    @Override
+    public void gainExperience(int points) {
+        experience+=points;
+        System.out.println("Experience Gained:"+points);
+        if (experience>=100){
+            level++;
+        experience-=100;
+        }
+        System.out.println("Level Up!"+name +"reached Level"+level);
+        }   
+    }
+    
+
+
+public class GameSystem {
+
+    public static void main(String[] args) {
+       Warrior W=new Warrior("Aragon",1,0); 
+       
+       W.attack();     
+       W.defend();
+       System.out.println("Final Stats:");
+       W.showStats();
+    }
+}
